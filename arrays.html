@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .raghu{
+           border:none;
+           border-style: solid;
+           height:50px;
+           width:130px;
+           background-color: green;
+           color:white
+        }
+        .duedate{
+            height:40px;
+            width:180px;
+            padding:20px;
+            box-sizing: border-box;
+            font-size: 15px;
+        }
+        .border{
+            height:40px;
+            width:180px;
+        }
+        .deeku{
+            border:none;
+           border-style: solid;
+           height:50px;
+           width:130px;
+           background-color: rgb(128, 0, 0);
+           color:white
+        }
+    .grid ,.grid-template{
+        display: grid;
+        grid-template-columns: 200px 200px 100px;
+        align-items: center;
+    }
+    #div{
+        font-size:25px
+    }
+    </style>
+</head>
+<body>
+<div class="grid">
+    <input class="border" placeholder="Todo name">
+<input type="date" name="" class="duedate">
+<button class="button raghu" onclick="
+sai();
+">add</button>
+
+</div>
+<div id="div"></div>
+</body>
+<script>
+    const todolist=[
+        {
+            name:'sai',
+            duedate:'24-7-2024'
+        }
+    ];
+    
+    function giri(){
+        let todohtml='';
+        for(let i=0;i<todolist.length;i++){
+        const element=todolist[i];
+        const name=element.name;
+            
+        const duedate=element.duedate;
+        const html=`
+        <div class="grid-template">
+    <div>${name}</div>
+        <div>${duedate}</div>
+            <button onclick="
+        todolist.splice(${i},1);
+        giri(); 
+        " class="deeku">delete</button>
+        </div>
+        `;
+        todohtml+=html;
+    }
+    document.querySelector('#div').innerHTML=todohtml;
+   }
+    function sai(){
+        const saikumar= document.querySelector('.border');
+        const name=saikumar.value;
+        const insert=document.querySelector('.duedate');
+        const duedate=insert.value;
+        todolist.push({
+            name:name,
+            duedate:duedate
+        }
+        );
+        saikumar.value='';
+        giri();
+    }
+
+   
+
+</script>
+</html>
